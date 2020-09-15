@@ -1,3 +1,8 @@
+# Third party libraries
 /vendor/
+
+# Editor files
 /.idea/
 
+# Application specific config
+env.php
