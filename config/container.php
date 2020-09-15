@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use App\Factory\LoggerFactory;
+use App\Middleware\SessionMiddleware;
 use Psr\Container\ContainerInterface;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
@@ -8,6 +9,10 @@ use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 return [
 
@@ -73,5 +78,21 @@ return [
             $container->get(App::class),
             Twig::class
         );
+    },
+
+    // Sessions
+    Session::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['session'];
+
+        // check for CLI environment
+        if (PHP_SAPI === 'cli') {
+            return new Session(new MockArraySessionStorage());
+        } else {
+            return new Session(new NativeSessionStorage($settings));
+        }
+    },
+
+    SessionInterface::class => function (ContainerInterface $container) {
+        return $container->get(Session::class);
     },
 ];

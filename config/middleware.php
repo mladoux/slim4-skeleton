@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use App\Middleware\SessionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
@@ -10,6 +11,9 @@ return function (App $app) {
     // Rendering
     $app->addBodyParsingMiddleware();       // Parse json/xml/form data.
     $app->add(TwigMiddleware::class);       // Twig templates.
+
+    // Sessions
+    $app->add(SessionMiddleware::class);    // Session management.
 
     // Routing
     $app->addRoutingMiddleware();           // Built-in Slim router.

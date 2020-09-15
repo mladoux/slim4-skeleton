@@ -2,6 +2,7 @@
 
 namespace App\Action;
 
+use App\Foundation\Action\BaseAction;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
