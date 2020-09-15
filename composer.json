@@ -1,0 +1,13 @@
+{
+    "name": "mladoux/slim4-skeleton",
+    "description": "Skeleton to build Slim 4 applications",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark LaDoux",
+            "email": "mark.ladoux@gmail.com"
+        }
+    ],
+    "require": {}
+}
