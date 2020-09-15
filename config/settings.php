@@ -9,6 +9,7 @@ $settings = [];
 // Register configurations.
 $settings['path']   = require __DIR__ . '/path.php';
 $settings['error']  = require __DIR__ . '/error.php';
+$settings['logger'] = require __DIR__ . '/logger.php';
 
 // Return array to container.
 return $settings;

@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use App\Factory\LoggerFactory;
 use Psr\Container\ContainerInterface;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
@@ -21,23 +22,33 @@ return [
 
     // Handle errors.
     ErrorMiddleware::class => function (ContainerInterface $container) {
+
+        // Configure error handler
         $app        = $container->get(App::class);
         $settings   = $container->get('settings')['error'];
 
-        // TODO: Integrate logger
+        // Configure error log
+        $loggerFactory  = $container->get(LoggerFactory::class);
+        $logger         = $loggerFactory->addFileHandler('error.log')->createInstance('error');
 
         return new ErrorMiddleware(
             $app->getCallableResolver(),
             $app->getResponseFactory(),
             (bool)$settings['display_error_details'],
             (bool)$settings['log_errors'],
-            (bool)$settings['log_error_details']
+            (bool)$settings['log_error_details'],
+            $logger
         );
     },
 
     // Detect base path.
     BasePathMiddleware::class => function (ContainerInterface $container) {
         return new BasePathMiddleware($container->get(App::class));
+    },
+
+    // Logger
+    LoggerFactory::class => function (ContainerInterface $container) {
+        return new LoggerFactory($container->get('settings')['logger']);
     },
 
 ];
