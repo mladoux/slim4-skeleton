@@ -7,6 +7,7 @@
 
 namespace App\Foundation\Action;
 
+use Psr\Http\Message\ResponseInterface;
 use Slim\Views\Twig;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -33,5 +34,10 @@ class BaseAction
     {
         $this->twig     = $twig;
         $this->session  = $session;
+    }
+
+    public function render(ResponseInterface $response, string $template, array $args = []) : ResponseInterface
+    {
+        return $this->twig->render($response, 'home.twig', []);
     }
 }

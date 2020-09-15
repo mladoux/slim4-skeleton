@@ -2,14 +2,15 @@
 
 namespace App\Action;
 
-use App\Foundation\Action\BaseAction;
+use App\Foundation\Action\ApiAction;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class HomeAction extends BaseAction
+class HomeApiAction extends ApiAction
 {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
     {
-        return $this->render($response, 'home.twig');
+        $data = ['message' => 'Hello, world!'];
+        return $this->render($response, $data);
     }
 }
