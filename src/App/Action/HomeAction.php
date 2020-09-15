@@ -5,12 +5,10 @@ namespace App\Action;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class HomeAction
+final class HomeAction extends BaseAction
 {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response) : ResponseInterface
     {
-        $response->getBody()->write('Hello, world!');
-
-        return $response;
+        return $this->twig->render($response, 'home.twig', []);
     }
 }

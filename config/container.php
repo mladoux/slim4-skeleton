@@ -6,6 +6,8 @@ use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
 return [
 
@@ -51,4 +53,25 @@ return [
         return new LoggerFactory($container->get('settings')['logger']);
     },
 
+    // Twig templates
+    Twig::class => function (ContainerInterface $container) {
+        $settings = $container->get('settings')['twig'];
+
+        $paths              = $settings['paths'];
+        $options            = $settings['options'];
+        $options['cache']   = $options['cache_enabled'] ? $options['cache_path'] : false;
+
+        $twig = Twig::create($paths, $options);
+
+        // Extensions go here
+
+        return $twig;
+    },
+
+    TwigMiddleware::class => function (ContainerInterface $container) {
+        return TwigMiddleware::createFromContainer(
+            $container->get(App::class),
+            Twig::class
+        );
+    },
 ];
