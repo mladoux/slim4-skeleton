@@ -10,4 +10,6 @@ if (file_exists($env_config = dirname(__DIR__) . '/env.php')) require $env_confi
 require_once __DIR__ . '/common.php';
 
 // Run the applicaton.
-(require __DIR__ . '/app.php')->run();
+$app = require __DIR__ . '/app.php';
+
+return $app;
