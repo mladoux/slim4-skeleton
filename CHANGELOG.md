@@ -1,4 +1,4 @@
-* **2020-09-16
+* **2020-09-16**
     * Backed out multiple database design.
     * Added PHPUnit as a dev dependency.
 * **2020-09-15**
