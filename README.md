@@ -14,7 +14,7 @@ Slim 4 template repository to base my Slim 4 applications on.
 
 ## Thanks
 
-Special thanks to [https://odan.github.io/about.html](Daniel Opitz). His tutorials aided me
+Special thanks to [Daniel Opitz](https://odan.github.io/about.html). His tutorials aided me
 immeasurably in understanding Slim 4, and the creation of this skeleton.
 
 ## Note
