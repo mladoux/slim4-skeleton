@@ -11,6 +11,7 @@ Slim 4 template repository to base my Slim 4 applications on.
 * Session management via [Symfony's HttpFoundation](https://symfony.com/doc/current/components/http_foundation.html).
 * PSR-7 provided via [Tobias Nyholm](https://github.com/Nyholm/psr7).
 * Dependency injection via [PHP-DI](https://php-di.org/).
+* DBAL via [Doctrine](https://www.doctrine-project.org/projects/dbal.html).
 
 ## Thanks
 

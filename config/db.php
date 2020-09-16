@@ -1,18 +1,10 @@
 <?php declare(strict_types=1);
-/**
- * Example of env.php file contents with default values set.
- *
- * Please use this file as a reference for configuring your application.
- */
 
-// App Environment
-$_ENV['app.environment'] = 'production';
+$db = [];
 
-// Database Connections
-$_ENV['db'] = [];
+$db['connections'] = [];
 
-// mysql connection example
-$_ENV['db']['mysql'] = [
+$db['connections']['mysql'] = [
     'driver'    => 'pdo_mysql',
     'host'      => 'localhost',
     'port'      => 3306,
@@ -30,8 +22,12 @@ $_ENV['db']['mysql'] = [
     ],
 ];
 
-// sqlite connection example
-$_ENV['db']['sqlite'] = [
-    'driver' => 'pdo_sqlite',
-    'url'    => 'sqlite:///' . __DIR__ . '/storage/database/app.sqlite',
-];
+// Grab connections from environment config
+$connections = appEnv('db', []);
+
+// Add connections to array.
+foreach ($connections as $name => $config) {
+    $db['connections'][$name] = $config;
+}
+
+return $db;

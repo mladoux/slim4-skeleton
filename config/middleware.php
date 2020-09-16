@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-use App\Middleware\SessionMiddleware;
+use App\Foundation\Middleware\SessionMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;

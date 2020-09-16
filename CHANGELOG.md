@@ -4,3 +4,4 @@
     * Implement logger.
     * Add Twig template system.
     * Session management.
+    * DBAL.

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Factory;
+namespace App\Foundation\Factory;
 
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
