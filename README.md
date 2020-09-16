@@ -6,11 +6,11 @@ Slim 4 template repository to base my Slim 4 applications on.
 
 ## Features
 
-* Logging via [https://github.com/Seldaek/monolog](Monolog).
-* Templates via [https://twig.symfony.com/](Twig).
-* Session management via [https://symfony.com/doc/current/components/http_foundation.html](Symfony's HttpFoundation).
-* PSR-7 provided via [https://github.com/Nyholm/psr7](Tobias Nyholm).
-* Dependency injection via [https://php-di.org/](https://php-di.org/).
+* Logging via [Monolog](https://github.com/Seldaek/monolog).
+* Templates via [Twig](https://twig.symfony.com/).
+* Session management via [Symfony's HttpFoundation](https://symfony.com/doc/current/components/http_foundation.html).
+* PSR-7 provided via [Tobias Nyholm](https://github.com/Nyholm/psr7).
+* Dependency injection via [PHP-DI](https://php-di.org/).
 
 ## Thanks
 
