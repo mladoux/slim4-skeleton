@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 
 use App\Foundation\Factory\LoggerFactory;
+use Doctrine\DBAL\Configuration as DoctrineConfiguration;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
 use Psr\Container\ContainerInterface;
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
@@ -95,6 +98,18 @@ $objects[Session::class] = function (ContainerInterface $container) {
 
 $objects[SessionInterface::class] = function (ContainerInterface $container) {
     return $container->get(Session::class);
+};
+
+// Database
+$object[Connection::class] = function (ContainerInterface $container) {
+    $config = new DoctrineConfiguration();
+    $connectionParams = $container->get('settings')['db'];
+
+    return DriverManager::getConnection($connectionParams, $config);
+};
+
+$object[PDO::class] = function (ContainerInterface $container) {
+    return $container->get(Connection::class)->getWrappedConnection();
 };
 
 return $objects;

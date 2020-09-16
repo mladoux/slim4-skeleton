@@ -1,10 +1,6 @@
 <?php declare(strict_types=1);
 
-$db = [];
-
-$db['connections'] = [];
-
-$db['connections']['mysql'] = [
+$connection = [
     'driver'    => 'pdo_mysql',
     'host'      => 'localhost',
     'port'      => 3306,
@@ -22,12 +18,4 @@ $db['connections']['mysql'] = [
     ],
 ];
 
-// Grab connections from environment config
-$connections = appEnv('db', []);
-
-// Add connections to array.
-foreach ($connections as $name => $config) {
-    $db['connections'][$name] = $config;
-}
-
-return $db;
+return appEnv('db', $connection);

@@ -8,11 +8,8 @@
 // App Environment
 $_ENV['app.environment'] = 'production';
 
-// Database Connections
-$_ENV['db'] = [];
-
-// mysql connection example
-$_ENV['db']['mysql'] = [
+// Database Connection example
+$_ENV['db'] = [
     'driver'    => 'pdo_mysql',
     'host'      => 'localhost',
     'port'      => 3306,
@@ -28,10 +25,4 @@ $_ENV['db']['mysql'] = [
         PDO::ATTR_DEFAULT_FETCH_MODE    => PDO::FETCH_ASSOC,
         PDO::MYSQL_ATTR_INIT_COMMAND    => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci',
     ],
-];
-
-// sqlite connection example
-$_ENV['db']['sqlite'] = [
-    'driver' => 'pdo_sqlite',
-    'url'    => 'sqlite:///' . __DIR__ . '/storage/database/app.sqlite',
 ];
