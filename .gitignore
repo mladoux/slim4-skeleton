@@ -6,3 +6,8 @@
 
 # Application specific config
 env.php
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache
+/build
